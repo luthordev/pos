@@ -29,7 +29,11 @@ class AppServiceProvider extends ServiceProvider
         });
 
         Blade::directive('money', function ($money) {
-            return "<?php echo number_format($money, 2); ?>";
+            return "<?php echo number_format($money, 0); ?>";
+        });
+
+        Blade::directive('date', function ($date) {
+            return "<?php echo date_format(date_create($date), 'd/M/Y'); ?>";
         });
     }
 }

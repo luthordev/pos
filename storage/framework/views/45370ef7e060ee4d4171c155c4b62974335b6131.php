@@ -8,7 +8,6 @@
         </h6>
     </div>
     <div class="card-body">
-        <a href="#" class="btn btn-warning mb-3">Tambah Tagihan</a>
         <table class="table">
             <thead>
                 <th>No</th>

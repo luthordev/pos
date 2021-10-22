@@ -1,4 +1,4 @@
-const mix = require('laravel-mix');
+const mix = require("laravel-mix");
 
 /*
  |--------------------------------------------------------------------------
@@ -11,7 +11,14 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.js('resources/js/app.js', 'public/js')
-    .postCss('resources/css/app.css', 'public/css', [
-        //
-    ]);
+mix.js("resources/js/app.js", "public/js").postCss(
+    "resources/css/app.css",
+    "public/css"
+);
+
+mix.js("resources/js/datatables.min.js", "public/js").postCss(
+    "resources/css/datatables.min.css",
+    "public/css"
+);
+
+mix.js("resources/js/jquery-3.6.0.min.js", "public/js");

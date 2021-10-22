@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Bill;
 
 class BillController extends Controller
 {
@@ -13,7 +14,9 @@ class BillController extends Controller
      */
     public function index()
     {
-        return view('bills.index');
+        $bills = Bill::where('status', '=', 'unpaid')->get();
+
+        return view('bill.index', ['bills' => $bills]);
     }
 
     /**
@@ -43,9 +46,9 @@ class BillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Bill $bill)
     {
-        //
+        return view('bill.show', ['bill' => $bill]);
     }
 
     /**
@@ -54,9 +57,9 @@ class BillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Bill $bill)
     {
-        //
+        return view('bill.edit', ['bill' => $bill]);
     }
 
     /**
@@ -66,9 +69,20 @@ class BillController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Bill $bill, Request $request)
     {
-        //
+        $request->validate([
+            'pay' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $bill->update([
+            'status' => 'paid'
+        ]);
+        $bill->save();
+        
+        return redirect()->route('bill.index');
     }
 
     /**

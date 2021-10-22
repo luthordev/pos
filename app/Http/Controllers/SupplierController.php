@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Supplier;
 
 class SupplierController extends Controller
 {
@@ -13,7 +14,8 @@ class SupplierController extends Controller
      */
     public function index()
     {
-        return view('suppliers.index');
+        $suppliers = Supplier::all();
+        return view('supplier.index', ['suppliers' => $suppliers]);
     }
 
     /**
@@ -23,7 +25,7 @@ class SupplierController extends Controller
      */
     public function create()
     {
-        return view('suppliers.create');
+        return view('supplier.create');
     }
 
     /**
@@ -34,7 +36,22 @@ class SupplierController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'telp' => 'required|min:10|max:16',
+            'address' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $supplier = new Supplier([
+            'name' => $data['name'],
+            'telp' => $data['telp'],
+            'address' => $data['address']
+        ]);
+        $supplier->save();
+        
+        return redirect()->route('supplier.index');
     }
 
     /**
@@ -43,9 +60,9 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(Supplier $supplier)
     {
-        //
+        return view('supplier.show', ['supplier' => $supplier]);
     }
 
     /**
@@ -54,9 +71,9 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(Supplier $supplier)
     {
-        //
+        return view('supplier.edit', ['supplier' => $supplier]);
     }
 
     /**
@@ -66,9 +83,24 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Supplier $supplier, Request $request)
     {
-        //
+        $request->validate([
+            'name' => 'required',
+            'telp' => 'required|min:10|max:16',
+            'address' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $supplier->update([
+            'name' => $data['name'],
+            'telp' => $data['telp'],
+            'address' => $data['address']
+        ]);
+        $supplier->save();
+        
+        return redirect()->route('supplier.index');
     }
 
     /**
@@ -77,8 +109,10 @@ class SupplierController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Supplier $supplier)
     {
-        //
+        $supplier->delete();
+
+        return redirect()->back();
     }
 }

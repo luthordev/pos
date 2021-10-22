@@ -1,12 +1,11 @@
-@import url("https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700");
-
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
 body {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     background: #fafafa;
 }
 
 p {
-    font-family: 'Poppins', sans-serif;
+    font-family: "Poppins", sans-serif;
     font-size: 1.1em;
     font-weight: 300;
     line-height: 1.7em;
@@ -18,7 +17,6 @@ a:hover,
 a:focus {
     color: inherit;
     text-decoration: none;
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -28,12 +26,10 @@ a:focus {
     border: none;
     border-radius: 0;
     margin-bottom: 40px;
-    -webkit-box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
     box-shadow: 1px 1px 3px rgba(0, 0, 0, 0.1);
 }
 
 .navbar-btn {
-    -webkit-box-shadow: none;
     box-shadow: none;
     outline: none !important;
     border: none;
@@ -50,14 +46,9 @@ a:focus {
     SIDEBAR STYLE
 ----------------------------------------------------- */
 .wrapper {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
     width: 100%;
-    -webkit-box-align: stretch;
-    -ms-flex-align: stretch;
     align-items: stretch;
-    -webkit-perspective: 1500px;
     perspective: 1500px;
 }
 
@@ -66,15 +57,12 @@ a:focus {
     max-width: 250px;
     background: #febd55;
     color: #fff;
-    -webkit-transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
     transition: all 0.6s cubic-bezier(0.945, 0.02, 0.27, 0.665);
-    -webkit-transform-origin: bottom left;
     transform-origin: bottom left;
 }
 
 #sidebar.active {
     margin-left: -250px;
-    -webkit-transform: rotateY(100deg);
     transform: rotateY(100deg);
 }
 
@@ -104,7 +92,7 @@ a:focus {
     background: #fff;
 }
 
-#sidebar ul li.active>a,
+#sidebar ul li.active > a,
 a[aria-expanded="true"] {
     color: #fff;
     background: #f5ae3c;
@@ -119,7 +107,6 @@ a[data-toggle="collapse"] {
     position: absolute;
     top: 50%;
     right: 20px;
-    -webkit-transform: translateY(-50%);
     transform: translateY(-50%);
 }
 
@@ -159,7 +146,6 @@ a.article:hover {
     width: 100%;
     padding: 20px;
     min-height: 100vh;
-    -webkit-transition: all 0.3s;
     transition: all 0.3s;
 }
 
@@ -176,14 +162,11 @@ a.article:hover {
     margin: 0 auto;
     display: block;
     background: #555;
-    -webkit-transition: all 0.8s cubic-bezier(0.81, -0.33, 0.345, 1.375);
     transition: all 0.8s cubic-bezier(0.81, -0.33, 0.345, 1.375);
-    -webkit-transition-delay: 0.2s;
     transition-delay: 0.2s;
 }
 
 #sidebarCollapse span:first-of-type {
-    -webkit-transform: rotate(45deg) translate(2px, 2px);
     transform: rotate(45deg) translate(2px, 2px);
 }
 
@@ -192,12 +175,10 @@ a.article:hover {
 }
 
 #sidebarCollapse span:last-of-type {
-    -webkit-transform: rotate(-45deg) translate(1px, -1px);
     transform: rotate(-45deg) translate(1px, -1px);
 }
 
 #sidebarCollapse.active span {
-    -webkit-transform: none;
     transform: none;
     opacity: 1;
     margin: 5px auto;
@@ -209,20 +190,17 @@ a.article:hover {
 @media (max-width: 768px) {
     #sidebar {
         margin-left: -250px;
-        -webkit-transform: rotateY(90deg);
         transform: rotateY(90deg);
     }
 
     #sidebar.active {
         margin-left: 0;
-        -webkit-transform: none;
         transform: none;
     }
 
     #sidebarCollapse span:first-of-type,
     #sidebarCollapse span:nth-of-type(2),
     #sidebarCollapse span:last-of-type {
-        -webkit-transform: none;
         transform: none;
         opacity: 1;
         margin: 5px auto;
@@ -233,7 +211,6 @@ a.article:hover {
     }
 
     #sidebarCollapse.active span:first-of-type {
-        -webkit-transform: rotate(45deg) translate(2px, 2px);
         transform: rotate(45deg) translate(2px, 2px);
     }
 
@@ -242,7 +219,7 @@ a.article:hover {
     }
 
     #sidebarCollapse.active span:last-of-type {
-        -webkit-transform: rotate(-45deg) translate(1px, -1px);
         transform: rotate(-45deg) translate(1px, -1px);
     }
 }
+

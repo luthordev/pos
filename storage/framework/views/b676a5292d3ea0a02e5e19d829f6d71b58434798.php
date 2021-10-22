@@ -10,8 +10,11 @@
 
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css"
         integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
-        
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.3/datatables.min.css"/>
     <link rel="stylesheet" href="<?php echo e(asset('css/app.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('css/datatables.min.css')); ?>">
+
+    <script src="<?php echo e(asset('js/app.js')); ?>"></script>
 
     <?php echo $__env->yieldContent('css'); ?>
     
@@ -27,20 +30,20 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li class="<?php echo e(request()->is('dashboard*') ? 'active' : ''); ?>">
+                <li class="<?php echo e(request()->is('/') ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('dashboard.index')); ?>">Dashboard</a>
                 </li>
-                <li class="<?php echo e(request()->is('sales*') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('sales.index')); ?>">Penjualan</a>
+                <li class="<?php echo e(request()->is('sale*') ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('sale.index')); ?>">Penjualan</a>
                 </li>
-                <li class="<?php echo e(request()->is('products*') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('products.index')); ?>">Produk</a>
+                <li class="<?php echo e(request()->is('product*') ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('product.index')); ?>">Produk</a>
                 </li>
-                <li class="<?php echo e(request()->is('suppliers*') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('suppliers.index')); ?>">Supplier</a>
+                <li class="<?php echo e(request()->is('supplier*') ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('supplier.index')); ?>">Supplier</a>
                 </li>
                 <li class="<?php echo e(request()->is('bills*') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('bills.index')); ?>">Tagihan</a>
+                    <a href="<?php echo e(route('bill.index')); ?>">Tagihan</a>
                 </li>
             </ul>
         </nav>
@@ -74,7 +77,8 @@
         </div>
     </div>
 
-    <script src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.5.1.js"></script>
+    <script type="text/javascript" src="https://cdn.datatables.net/v/bs4/jq-3.6.0/dt-1.11.3/datatables.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
         integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous">
     </script>

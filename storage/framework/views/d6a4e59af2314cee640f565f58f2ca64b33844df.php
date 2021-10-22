@@ -18,16 +18,17 @@
                 <th>Action</th>
             </thead>
             <tbody>
+                <?php $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $supplier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
                 <tr>
-                    <td>1</td>
-                    <td>Berkah Jaya</td>
-                    <td>08561216751</td>
-                    <td>Cijambe, Subang</td>
+                    <td><?php echo e($loop->index + 1); ?></td>
+                    <td><?php echo e($supplier->name); ?></td>
+                    <td><?php echo e($supplier->telp); ?></td>
+                    <td><?php echo e($supplier->address); ?></td>
                     <td>
                         <div class="d-flex">
-                            <a href="#" class="mr-2 btn btn-primary">Detail</a>
-                            <a href="#" class="mr-2 btn btn-success">Edit</a>
-                            <form action="#" method="POST">
+                            <a href="<?php echo e(route('suppliers.show', $supplier->id)); ?>" class="mr-2 btn btn-primary">Detail</a>
+                            <a href="<?php echo e(route('suppliers.edit', $supplier->id)); ?>" class="mr-2 btn btn-success">Edit</a>
+                            <form action="<?php echo e(route('suppliers.destroy', $supplier->id)); ?>" method="POST">
                                 <?php echo csrf_field(); ?>
                                 <?php echo method_field('DELETE'); ?>
                                 <button type="submit" class="mr-2 btn btn-danger">Delete</button>
@@ -35,6 +36,7 @@
                         </div>
                     </td>
                 </tr>
+                <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
             </tbody>
         </table>
     </div>
