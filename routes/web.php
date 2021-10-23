@@ -20,7 +20,7 @@ use Illuminate\Support\Facades\Route;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('sale', [SaleController::class, 'index'])->name('sale.index');
-Route::get('sale/submit', [SaleController::class, 'submit'])->name('sale.submit');
+Route::post('sale/submit', [SaleController::class, 'submit'])->name('sale.submit');
 Route::resources([
     'product' => ProductController::class,
     'supplier' => SupplierController::class,

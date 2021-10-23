@@ -18,7 +18,8 @@
             <div class="card-body">
                 <div>
                     <label for="barcode">Barcode</label>
-                    <p><?php echo e($product->barcode); ?></p>
+                    <p><img src="data:image/png;base64,<?php echo e(DNS1D::getBarcodePNG($product->barcode, 'UPCA', 3, 40, array(0,0,0), true)); ?>" width="250" height="50"/></p>
+                   
                 </div>
                 <div>
                     <label for="name">Nama</label>

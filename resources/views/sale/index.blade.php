@@ -13,6 +13,10 @@
                 <form action="#" method="POST">
                     @csrf
                     <div class="form-group">
+                        <label for="barcode">Barcode</label>
+                        <input type="text" name="barcode" id="barcode" class="form-control" autofocus required>
+                    </div>
+                    <div class="form-group">
                         <label for="product">Produk</label>
                         <select name="product" id="product" class="form-control">
                             <option disabled selected>-- PILIH PRODUK --</option>
