@@ -26,3 +26,5 @@ Route::resources([
     'supplier' => SupplierController::class,
     'bill' => BillController::class,
 ]);
+route::get('product/add', [ProductController::class, 'add']);
+route::put('product/adding', [ProductController::class, 'addStok']);

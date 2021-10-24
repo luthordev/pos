@@ -7,6 +7,7 @@ use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Supplier;
 use App\Models\Bill;
+use App\Models\OrderHistory;
 
 class ProductController extends Controller
 {
@@ -42,6 +43,30 @@ class ProductController extends Controller
         return view('product.add', ['products' => $products, 'suppliers' => $suppliers]);
     }
 
+    public function addStok(Product $product, Request $request){
+        $request->validate([
+            'qty' => 'required',
+        ]);
+
+        $data = $request->all();
+
+        $product->update([
+            'qty' => $data['qty'],
+        ]);
+        $product->save();
+
+        $orderHistory = new OrderHistory([
+            'product_id' => $product->id,
+            'supplier_id' => $product->supplier->id,
+            'qty' => $data['qty'],
+            'total_price' => $product->purchase_price * $data['qty'],
+            'payment' => $data['payment']
+        ]);
+        $orderHistory->save();
+        
+        return redirect()->route('product.index');
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -62,7 +87,7 @@ class ProductController extends Controller
         $data = $request->all();
 
         $product = new Product([
-            'barcode' => rand(00000001, 99999999),
+            'barcode' => rand(000000000001, 999999999999),
             'name' => $data['name'],
             'purchase_price' => $data['purchase_price'],
             'price' => $data['price'],
@@ -71,8 +96,18 @@ class ProductController extends Controller
         ]);
         $product->save();
 
+        $latestProduct = Product::latest()->select('id', 'purchase_price')->first();
+
+        $orderHistory = new OrderHistory([
+            'product_id' => $latestProduct->id,
+            'supplier_id' => $latestProduct->supplier->id,
+            'qty' => $data['qty'],
+            'total_price' => $latestProduct->purchase_price * $data['qty'],
+            'payment' => $data['payment']
+        ]);
+        $orderHistory->save();
+
         if($data['payment'] == 'credit'){
-            $latestProduct = Product::latest()->select('id', 'purchase_price')->first();
             $bill = new Bill([
                 'invoice' => 'INV/BILL/' . date('Ymd') . '/' . strtoupper(Str::random(10)) . rand(001, 999),
                 'date' => date('Y-m-d H:m:s'),
