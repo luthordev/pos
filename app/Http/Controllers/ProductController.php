@@ -35,23 +35,26 @@ class ProductController extends Controller
         return view('product.create', ['suppliers' => $suppliers]);
     }
 
-    public function add()
+    public function add($id)
     {
-        $products = Product::all();
-        $suppliers = Supplier::all();
-
-        return view('product.add', ['products' => $products, 'suppliers' => $suppliers]);
+        $product = Product::find($id);
+        return view('product.add', ['product' => $product]);
     }
 
-    public function addStok(Product $product, Request $request){
+    public function addStock(Request $request){
         $request->validate([
+            'id' => 'required',
+            'purchase_price' => 'required',
             'qty' => 'required',
+            'payment' => 'required',
         ]);
 
         $data = $request->all();
 
+        $product = Product::find($data['id']);
+
         $product->update([
-            'qty' => $data['qty'],
+            'qty' => $product->qty + $data['qty'],
         ]);
         $product->save();
 
@@ -76,6 +79,7 @@ class ProductController extends Controller
     public function store(Request $request)
     {
         $request->validate([
+            'barcode' => 'required',
             'name' => 'required',
             'purchase_price' => 'required',
             'price' => 'required',
@@ -87,7 +91,8 @@ class ProductController extends Controller
         $data = $request->all();
 
         $product = new Product([
-            'barcode' => rand(000000000001, 999999999999),
+            // 'barcode' => rand(00000000001, 99999999999),
+            'barcode' => $data['barcode'],
             'name' => $data['name'],
             'purchase_price' => $data['purchase_price'],
             'price' => $data['price'],
@@ -96,7 +101,7 @@ class ProductController extends Controller
         ]);
         $product->save();
 
-        $latestProduct = Product::latest()->select('id', 'purchase_price')->first();
+        $latestProduct = Product::latest()->select('id', 'purchase_price', 'supplier_id')->first();
 
         $orderHistory = new OrderHistory([
             'product_id' => $latestProduct->id,

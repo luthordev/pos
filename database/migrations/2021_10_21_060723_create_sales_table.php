@@ -16,9 +16,10 @@ class CreateSalesTable extends Migration
         Schema::create('sales', function (Blueprint $table) {
             $table->id();
             $table->datetime('date');
-            $table->string('invoice')->unique();
+            $table->string('invoice');
             $table->foreignId('product_id');
             $table->integer('qty');
+            $table->integer('discount');
         });
     }
 

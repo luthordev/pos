@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+use Mike42\Escpos\Printer;
+use Mike42\Escpos\PrintConnectors\WindowsPrintConnector;
 
 Route::get('/', [DashboardController::class, 'index'])->name('dashboard.index');
 Route::get('sale', [SaleController::class, 'index'])->name('sale.index');
@@ -26,5 +28,5 @@ Route::resources([
     'supplier' => SupplierController::class,
     'bill' => BillController::class,
 ]);
-route::get('product/add', [ProductController::class, 'add']);
-route::put('product/adding', [ProductController::class, 'addStok']);
+route::get('product/add/{id}', [ProductController::class, 'add'])->name('product.add');
+route::post('product/adding', [ProductController::class, 'addStock'])->name('product.addStock');

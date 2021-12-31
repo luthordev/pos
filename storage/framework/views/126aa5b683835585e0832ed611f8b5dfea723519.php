@@ -29,6 +29,7 @@
                     <td>
                         <div class="d-flex">
                             <a href="<?php echo e(route('product.show', $product->id)); ?>" class="mr-2 btn btn-primary">Detail</a>
+                            <a href="<?php echo e(route('product.add', $product->id)); ?>" class="mr-2 btn btn-warning">Tambah</a>
                             <a href="<?php echo e(route('product.edit', $product->id)); ?>" class="mr-2 btn btn-success">Edit</a>
                             <form action="<?php echo e(route('product.destroy', $product->id)); ?>" method="POST">
                                 <?php echo csrf_field(); ?>

@@ -29,6 +29,7 @@
                     <td>
                         <div class="d-flex">
                             <a href="{{ route('product.show', $product->id) }}" class="mr-2 btn btn-primary">Detail</a>
+                            <a href="{{ route('product.add', $product->id) }}" class="mr-2 btn btn-warning">Tambah</a>
                             <a href="{{ route('product.edit', $product->id) }}" class="mr-2 btn btn-success">Edit</a>
                             <form action="{{ route('product.destroy', $product->id) }}" method="POST">
                                 @csrf

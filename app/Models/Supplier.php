@@ -9,5 +9,5 @@ class Supplier extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 }

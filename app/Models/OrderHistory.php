@@ -8,4 +8,14 @@ use Illuminate\Database\Eloquent\Model;
 class OrderHistory extends Model
 {
     use HasFactory;
+
+    protected $guarded = [];
+
+    public function product(){
+        return $this->belongsTo(Product::class);
+    }
+
+    public function supplier(){
+        return $this->belongsTo(Supplier::class);
+    }
 }

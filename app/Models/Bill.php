@@ -10,7 +10,7 @@ class Bill extends Model
     use HasFactory;
 
     public $timestamps = false;
-    public $guarded = [];
+    protected $guarded = [];
 
     public function product()
     {

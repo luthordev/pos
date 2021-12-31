@@ -16,36 +16,20 @@
                 </h6>
             </div>
             <div class="card-body">
-                <form action="{{ route('product.store') }}" method="POST">
+                <form action="{{ route('product.addStock') }}" method="POST">
                     @csrf
-                    <div class="form-group">
-                        <label for="barcode">Barcode (harus 11 digit)</label>
-                        <input type="text" name="barcode" minlength="11" maxlength="11" id="barcode" class="form-control" required>
-                    </div>
+                    <input type="text" name="id" id="id" class="form-control" value="{{ $product->id }}" hidden>
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
+                        <input type="text" name="name" id="name" class="form-control" value="{{ $product->name }}" readonly>
                     </div>
                     <div class="form-group">
                         <label for="purchase_price">Harga Beli</label>
                         <input type="number" name="purchase_price" id="purchase_price" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="price">Harga Jual</label>
-                        <input type="number" name="price" id="price" class="form-control" required>
-                    </div>
-                    <div class="form-group">
                         <label for="qty">Qty</label>
                         <input type="number" name="qty" id="qty" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="supplier">Supplier</label>
-                        <select name="supplier" id="supplier" class="form-control">
-                            <option disabled selected>-- PILIH SUPPLIER --</option>
-                            @foreach($suppliers as $supplier)
-                            <option value="{{ $supplier->id }}">{{ $supplier->name }}</option>
-                            @endforeach
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="payment">Pembayaran</label>

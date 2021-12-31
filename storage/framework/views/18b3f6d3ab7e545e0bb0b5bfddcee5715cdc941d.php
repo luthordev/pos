@@ -16,36 +16,20 @@
                 </h6>
             </div>
             <div class="card-body">
-                <form action="<?php echo e(route('product.store')); ?>" method="POST">
+                <form action="<?php echo e(route('product.addStock')); ?>" method="POST">
                     <?php echo csrf_field(); ?>
-                    <div class="form-group">
-                        <label for="barcode">Barcode (harus 11 digit)</label>
-                        <input type="text" name="barcode" minlength="11" maxlength="11" id="barcode" class="form-control" required>
-                    </div>
+                    <input type="text" name="id" id="id" class="form-control" value="<?php echo e($product->id); ?>" hidden>
                     <div class="form-group">
                         <label for="name">Nama</label>
-                        <input type="text" name="name" id="name" class="form-control" required>
+                        <input type="text" name="name" id="name" class="form-control" value="<?php echo e($product->name); ?>" readonly>
                     </div>
                     <div class="form-group">
                         <label for="purchase_price">Harga Beli</label>
                         <input type="number" name="purchase_price" id="purchase_price" class="form-control" required>
                     </div>
                     <div class="form-group">
-                        <label for="price">Harga Jual</label>
-                        <input type="number" name="price" id="price" class="form-control" required>
-                    </div>
-                    <div class="form-group">
                         <label for="qty">Qty</label>
                         <input type="number" name="qty" id="qty" class="form-control" required>
-                    </div>
-                    <div class="form-group">
-                        <label for="supplier">Supplier</label>
-                        <select name="supplier" id="supplier" class="form-control">
-                            <option disabled selected>-- PILIH SUPPLIER --</option>
-                            <?php $__currentLoopData = $suppliers; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $supplier): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-                            <option value="<?php echo e($supplier->id); ?>"><?php echo e($supplier->name); ?></option>
-                            <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-                        </select>
                     </div>
                     <div class="form-group">
                         <label for="payment">Pembayaran</label>
@@ -72,4 +56,4 @@
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\pos\resources\views/product/create.blade.php ENDPATH**/ ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\pos\resources\views/product/add.blade.php ENDPATH**/ ?>

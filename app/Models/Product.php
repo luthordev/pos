@@ -9,7 +9,7 @@ class Product extends Model
 {
     use HasFactory;
 
-    public $guarded = [];
+    protected $guarded = [];
 
     public function supplier()
     {
