@@ -6,6 +6,21 @@
         visibility: hidden;
         display: none;
     }
+
+    #cart tr:hover{
+        background-color: rgb(240, 240, 240);
+    }
+
+    #cart input {
+        background-color: transparent;
+        border-color: transparent;
+        cursor: default;
+    }
+
+    #cart input:active {
+        background-color: transparent;
+        border-color: transparent;
+    }
 </style>
 @endsection
 
@@ -40,7 +55,7 @@
                     </div>
                     <div class="form-group">
                         <label for="qty">Qty</label>
-                        <input type="number" name="qty" id="qty" class="form-control" required>
+                        <input type="number" name="qty" id="qty" min="1" class="form-control" required>
                     </div>
                     <div class="form-group hide" id="fdiscount">
                         <label for="discount">Diskon (Rp)</label>

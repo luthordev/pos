@@ -1,5 +1,4 @@
-@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);
-body {
+@import url(https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700);body {
     font-family: "Poppins", sans-serif;
     background: #fafafa;
 }
@@ -222,4 +221,3 @@ a.article:hover {
         transform: rotate(-45deg) translate(1px, -1px);
     }
 }
-

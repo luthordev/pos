@@ -30,9 +30,6 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li class="@active('/')">
-                    <a href="{{ route('dashboard.index') }}">Dashboard</a>
-                </li>
                 <li class="@active('sale*')">
                     <a href="{{ route('sale.index') }}">Penjualan</a>
                 </li>
@@ -44,6 +41,9 @@
                 </li>
                 <li class="@active('bills*')">
                     <a href="{{ route('bill.index') }}">Tagihan</a>
+                </li>
+                <li class="@active('report*')">
+                    <a href="{{ route('report.index') }}">Laporan</a>
                 </li>
             </ul>
         </nav>

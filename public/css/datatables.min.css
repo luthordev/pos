@@ -192,7 +192,7 @@ table.dataTable > thead .sorting_desc:before,
 table.dataTable > thead .sorting_asc_disabled:before,
 table.dataTable > thead .sorting_desc_disabled:before {
     right: 1em;
-    content: "↑";
+    content: "\2191";
 }
 table.dataTable > thead .sorting:after,
 table.dataTable > thead .sorting_asc:after,
@@ -200,7 +200,7 @@ table.dataTable > thead .sorting_desc:after,
 table.dataTable > thead .sorting_asc_disabled:after,
 table.dataTable > thead .sorting_desc_disabled:after {
     right: 0.5em;
-    content: "↓";
+    content: "\2193";
 }
 table.dataTable > thead .sorting_asc:before,
 table.dataTable > thead .sorting_desc:after {
@@ -297,4 +297,3 @@ div.table-responsive
     > div[class^="col-"]:last-child {
     padding-right: 0;
 }
-

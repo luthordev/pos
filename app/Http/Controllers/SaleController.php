@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 use App\Models\Product;
 use App\Models\Sale;
+use Illuminate\Support\Facades\Http;
+
 
 class SaleController extends Controller
 {
@@ -17,6 +19,7 @@ class SaleController extends Controller
 
     public function submit(Request $request){
         $items = $request->all();
+        $itemsnya = [];
         $invoice = 'INV/' . date('Ymd') . '/' . strtoupper(Str::random(10)) . rand(001, 999);
         for($i=0; $i < count($items['name']); $i++){
             // update stock
@@ -33,10 +36,15 @@ class SaleController extends Controller
                 'qty' => $items['qty'][$i],
                 'discount' => $items['discount'][$i]
             ]);
+                        
             $sale->save();
-
-            return redirect()->route('sale.index');
         }
+
+        $response = Http::post('localhost:3000/print', [
+            'items' => $items,
+        ]);
+
+        return redirect()->route('sale.index');
 
     }
 }

@@ -30,9 +30,6 @@
             </div>
 
             <ul class="list-unstyled components">
-                <li class="<?php echo e(request()->is('/') ? 'active' : ''); ?>">
-                    <a href="<?php echo e(route('dashboard.index')); ?>">Dashboard</a>
-                </li>
                 <li class="<?php echo e(request()->is('sale*') ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('sale.index')); ?>">Penjualan</a>
                 </li>
@@ -44,6 +41,9 @@
                 </li>
                 <li class="<?php echo e(request()->is('bills*') ? 'active' : ''); ?>">
                     <a href="<?php echo e(route('bill.index')); ?>">Tagihan</a>
+                </li>
+                <li class="<?php echo e(request()->is('report*') ? 'active' : ''); ?>">
+                    <a href="<?php echo e(route('report.index')); ?>">Laporan</a>
                 </li>
             </ul>
         </nav>
